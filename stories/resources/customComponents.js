@@ -69,6 +69,11 @@ const customComponents = {
           }
     return <div style={style}>{timeSlotWrapperProps.children}</div>
   },
+  timeSlotContainerWrapper: (timeSlotContainerWrapperProps) => {
+    const style = {}
+    console.log({ timeSlotContainerWrapperProps })
+    return <div style={style}>{timeSlotContainerWrapperProps.children}</div>
+  },
   timeGutterWrapper: (timeGutterWrapperProps) => {
     return (
       <div

@@ -82,6 +82,16 @@ CustomTimeSlotWrapper.args = {
   },
 }
 
+export const CustomTimeSlotContainerWrapper = Template.bind({})
+CustomTimeSlotContainerWrapper.storyName = 'add custom timeSlotContainerWrapper'
+CustomTimeSlotContainerWrapper.args = {
+  defaultView: Views.WEEK,
+  events,
+  components: {
+    timeSlotContainerWrapper: customComponents.timeSlotContainerWrapper,
+  },
+}
+
 export const CustomEventWrapper = Template.bind({})
 CustomEventWrapper.storyName = 'add custom eventWrapper'
 CustomEventWrapper.args = {

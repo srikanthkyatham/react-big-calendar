@@ -11,26 +11,32 @@ export default class TimeSlotGroup extends Component {
       resource,
       group,
       getters,
-      components: { timeSlotWrapper: Wrapper = BackgroundWrapper } = {},
+      components: {
+        timeSlotWrapper: Wrapper = BackgroundWrapper,
+        timeSlotContainerWrapper: ContainerWrapper = BackgroundWrapper,
+      } = {},
     } = this.props
-
+    // modify here timeSlotContainerWrapper
     const groupProps = getters ? getters.slotGroupProp(group) : {}
+
     return (
-      <div className="rbc-timeslot-group" {...groupProps}>
-        {group.map((value, idx) => {
-          const slotProps = getters ? getters.slotProp(value, resource) : {}
-          return (
-            <Wrapper key={idx} value={value} resource={resource}>
-              <div
-                {...slotProps}
-                className={clsx('rbc-time-slot', slotProps.className)}
-              >
-                {renderSlot && renderSlot(value, idx)}
-              </div>
-            </Wrapper>
-          )
-        })}
-      </div>
+      <ContainerWrapper group={group} groupProps={groupProps} getters={getters}>
+        <div className="rbc-timeslot-group" {...groupProps}>
+          {group.map((value, idx) => {
+            const slotProps = getters ? getters.slotProp(value, resource) : {}
+            return (
+              <Wrapper key={idx} value={value} resource={resource}>
+                <div
+                  {...slotProps}
+                  className={clsx('rbc-time-slot', slotProps.className)}
+                >
+                  {renderSlot && renderSlot(value, idx)}
+                </div>
+              </Wrapper>
+            )
+          })}
+        </div>
+      </ContainerWrapper>
     )
   }
 }
